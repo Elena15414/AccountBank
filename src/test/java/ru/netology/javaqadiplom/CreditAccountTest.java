@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 public class CreditAccountTest {
 
     @Test
-    public void shouldAddToPositiveBalance() {
+    public void shouldAddToPositiveBalance() {  // тест на проверку добавления баланса
         CreditAccount account = new CreditAccount(
                 0,
                 5_000,
@@ -17,8 +17,9 @@ public class CreditAccountTest {
 
         Assertions.assertEquals(3_000, account.getBalance());
     }
+
     @Test
-    public void shouldTestPayTrue() {
+    public void shouldTestPayTrue() {    // тест на amount>0, результат ожидаемый balance-amount
         CreditAccount account = new CreditAccount(
                 0,
                 5_000,
@@ -30,8 +31,9 @@ public class CreditAccountTest {
         Assertions.assertTrue(actual);
         Assertions.assertEquals(0, account.getBalance());
     }
+
     @Test
-    public void shouldTestPayZero() {
+    public void shouldTestPayZero() {   //тест на amount=0
         CreditAccount account = new CreditAccount(
                 0,
                 5_000,
@@ -43,8 +45,9 @@ public class CreditAccountTest {
         Assertions.assertFalse(actual);
         Assertions.assertEquals(0, account.getBalance());
     }
+
     @Test
-    public void shouldTestPayNegative() {
+    public void shouldTestPayNegative() {   //тест на amount<0
         CreditAccount account = new CreditAccount(
                 0,
                 5_000,
@@ -56,8 +59,9 @@ public class CreditAccountTest {
         Assertions.assertFalse(actual);
         Assertions.assertEquals(50, account.getBalance());
     }
+
     @Test
-    public void shouldTestPayBalanceNegative() {
+    public void shouldTestPayBalanceNegative() {   // тест на  balance<-creditLimit
         CreditAccount account = new CreditAccount(
                 -5,
                 5_000,
@@ -69,8 +73,9 @@ public class CreditAccountTest {
         Assertions.assertFalse(actual);
         Assertions.assertEquals(-5, account.getBalance());
     }
+
     @Test
-    public void shouldTestAddTrue() {
+    public void shouldTestAddTrue() {   // тест , когда amount >0. Результат должен быть True. balance+amount
         CreditAccount account = new CreditAccount(
                 5,
                 5_000,
@@ -82,8 +87,9 @@ public class CreditAccountTest {
         Assertions.assertTrue(actual);
         Assertions.assertEquals(55, account.getBalance());
     }
+
     @Test
-    public void shouldTestAddFalseZero() {
+    public void shouldTestAddFalseZero() {  // тест когда amount =0
         CreditAccount account = new CreditAccount(
                 5,
                 5_000,
@@ -95,8 +101,9 @@ public class CreditAccountTest {
         Assertions.assertFalse(actual);
         Assertions.assertEquals(5, account.getBalance());
     }
+
     @Test
-    public void shouldTestAddFalseNegative() {
+    public void shouldTestAddFalseNegative() {  //  тест , когда amount<0
         CreditAccount account = new CreditAccount(
                 5,
                 5_000,
@@ -108,8 +115,9 @@ public class CreditAccountTest {
         Assertions.assertFalse(actual);
         Assertions.assertEquals(5, account.getBalance());
     }
+
     @Test
-    public void shouldTestYearChange() {
+    public void shouldTestYearChange() {   // тест на первое условие -если на счёте -200 рублей, то при ставке 15% ответ должен быть -30.
         CreditAccount account = new CreditAccount(
                 -200,
                 5_000,
@@ -118,8 +126,9 @@ public class CreditAccountTest {
 
         Assertions.assertEquals(-30, account.yearChange());
     }
+
     @Test
-    public void shouldTestYearChange2() {
+    public void shouldTestYearChange2() {     // тест на второе условие "если на счёте 200 рублей, то при любой ставке ответ должен быть 0"
         CreditAccount account = new CreditAccount(
                 200,
                 5_000,
@@ -128,8 +137,9 @@ public class CreditAccountTest {
 
         Assertions.assertEquals(0, account.yearChange());
     }
+
     @Test
-    public void shouldTestGetCreditLimit() {
+    public void shouldTestGetCreditLimit() {  //тест на метод getCreditLimit
         CreditAccount account = new CreditAccount(
                 200,
                 5_000,
@@ -137,5 +147,21 @@ public class CreditAccountTest {
         );
 
         Assertions.assertEquals(5000, account.getCreditLimit());
+    }
+
+    @Test
+    public void shouldWhenTheRateIsLessThanZero() {
+        CreditAccount account = new CreditAccount(
+                200,
+                5_000,
+                -10
+        );
+        account.yearChange();
+        // процентная ставка -10, значит должено сработать исключение
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            account.yearChange();
+        });
+
     }
 }
