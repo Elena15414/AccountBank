@@ -14,7 +14,7 @@ public class Account {
 
     public int yearChange() {
         return 0;
-    }// добавил int rate
+    }
 
     public int getBalance() {
         return balance;

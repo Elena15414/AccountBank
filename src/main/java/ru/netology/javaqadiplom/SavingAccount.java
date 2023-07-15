@@ -32,6 +32,7 @@ public class SavingAccount extends Account {
         this.rate = rate;
     }
 
+
     /**
      * Операция оплаты с карты на указанную сумму.
      * В результате успешного вызова этого метода, баланс должен уменьшиться
@@ -79,8 +80,8 @@ public class SavingAccount extends Account {
             return false;
         }
         if (balance + amount < maxBalance) {
-            balance += amount; // заменил = на +=, т.е. (balance = balance + amount)
-            return true;
+            balance = amount;     // Ожидаемый результат: При успешном выполнении метода Add , баланс должен увеличиться
+                return true;      //на сумму покупки balance = balance + amount,
         } else {
             return false;
         }
@@ -95,7 +96,8 @@ public class SavingAccount extends Account {
      * @return
      */
     @Override
-    public int yearChange() {return balance / 100 * rate;}
+    public int yearChange() {return balance / 100 * rate;} // отсутствие условий , что баланс счета находится в
+                                                            //  граничных значениях minbalance - maxbalance
 
 
 
