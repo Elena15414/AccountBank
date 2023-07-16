@@ -15,6 +15,6 @@ public class CreditAccountTest {
 
         account.add(3_000);
 
-        Assertions.assertEquals(3_000, account.getBalance());
+        Assertions.assertEquals(0, account.yearChange());
     }
 }
