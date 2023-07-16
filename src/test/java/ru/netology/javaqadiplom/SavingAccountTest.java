@@ -27,9 +27,9 @@ public class SavingAccountTest {
                 5
         );
 
-        account.add(23_000);
 
-        Assertions.assertEquals(2_000 , account.getBalance());
+
+        Assertions.assertFalse(account.add(23000));
     }
     @Test
     public void shouldAddThanAccountIsZero() {    // тест на добавление суммы на 0
