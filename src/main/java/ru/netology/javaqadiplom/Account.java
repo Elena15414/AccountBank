@@ -12,6 +12,10 @@ public class Account {
         return false;
     }
 
+    public boolean transfer (int amount) {   // добавил метод из Bank
+        return true;
+    }
+
     public int yearChange() {
         return 0;
     }
