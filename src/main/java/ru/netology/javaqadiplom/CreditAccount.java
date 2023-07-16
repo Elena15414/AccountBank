@@ -44,9 +44,9 @@ public class CreditAccount extends Account {
         if (amount <= 0) {
             return false;
         }
-        balance = balance - amount;
+        //balance = balance - amount; - поставил после выполнения проверки условия
         if (balance > -creditLimit) {
-            balance = -amount;
+            balance = balance - amount; // изменил условие
             return true;
         } else {
             return false;

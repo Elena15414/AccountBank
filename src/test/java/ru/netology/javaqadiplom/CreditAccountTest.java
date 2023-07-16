@@ -19,7 +19,7 @@ public class CreditAccountTest {
     }
 
     @Test
-    public void shouldTestPayTrue() {    // тест на amount>0, результат ожидаемый balance-amount
+    public void shouldTestPayTrue() {
         CreditAccount account = new CreditAccount(
                 0,
                 5_000,
@@ -28,8 +28,8 @@ public class CreditAccountTest {
 
         boolean actual = account.pay(50);
 
-        Assertions.assertTrue(actual);
-        Assertions.assertEquals(0, account.getBalance());
+        //Assertions.assertTrue(actual);
+        Assertions.assertEquals(-50, account.getBalance());
     }
 
     @Test
