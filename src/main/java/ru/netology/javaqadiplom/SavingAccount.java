@@ -47,18 +47,16 @@ public class SavingAccount extends Account {
     public boolean pay(int amount) {
 
         if (amount <= 0) {
-
             return false;
         }
-        balance = balance - amount;
         if (balance > minBalance) {
-
+            balance = balance - amount;
             return true;
         } else {
             return false;
         }
     }
-    
+
     /**
      * Операция пополнения карты на указанную сумму.
      * В результате успешного вызова этого метода, баланс должен увеличиться
@@ -77,8 +75,8 @@ public class SavingAccount extends Account {
             return false;
         }
         if (balance < maxBalance) {
-            balance = balance + amount;     // Ожидаемый результат: При успешном выполнении метода Add , баланс должен увеличиться
-            return true;   //на сумму покупки balance = balance + amount,
+            balance = balance + amount;
+            return true;
         } else {
             return false;
         }
@@ -94,11 +92,12 @@ public class SavingAccount extends Account {
      */
     @Override
     public int yearChange() {
+        if (minBalance < balance && balance < maxBalance) {
 
-        return balance / 100 * rate;
-    } // отсутствие условий , что баланс счета находится в
-    //  граничных значениях minbalance - maxbalance
-
+            return balance / 100 * rate;
+        }
+        return 0;
+    }
 
     public int getMinBalance() {
         return minBalance;
