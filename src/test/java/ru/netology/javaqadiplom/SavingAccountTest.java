@@ -158,7 +158,7 @@ public class SavingAccountTest {
     }
 
     @Test
-    public void testRateWhenLessMinBalance() {
+    public void testRateWhenLessMinBalance() {   //тест на minBalance < balance
 
         SavingAccount account = new SavingAccount(
 
@@ -172,7 +172,7 @@ public class SavingAccountTest {
     }
 
     @Test
-    public void testRateWhenMoreMaxBalance() {
+    public void testRateWhenMoreMaxBalance() {    //тест на balance > maxBalance
 
         SavingAccount account = new SavingAccount(
 
@@ -198,6 +198,34 @@ public class SavingAccountTest {
         );
 
         Assertions.assertEquals(150, account.yearChange());
+    }
+
+    @Test
+    public void testYearChangeBalanceEqualsMinBalance() {    // тест на условие minBalance = balance
+
+        SavingAccount account = new SavingAccount(
+
+                1_000,
+                1_000,
+                10_000,
+                10
+        );
+
+        Assertions.assertEquals(100, account.yearChange());
+    }
+
+    @Test
+    public void testYearChangeBalanceEqualsMaxBalance() {    // тест на условие balance = maxBalance
+
+        SavingAccount account = new SavingAccount(
+
+                10_000,
+                1_000,
+                10_000,
+                10
+        );
+
+        Assertions.assertEquals(1000, account.yearChange());
     }
 
     @Test
