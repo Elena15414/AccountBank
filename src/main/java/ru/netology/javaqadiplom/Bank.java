@@ -27,6 +27,7 @@ public class Bank extends Account {
      * @param amount - сумма перевода
      * @return - true если операция прошла успешно, false иначе
      */
+
     public boolean transfer(Account from, Account to, int amount) {
         if (amount <= 0) {
             return false;

@@ -5,16 +5,19 @@ import org.junit.jupiter.api.Test;
 
 
 public class BankTest {
-    // @Test
+    @Test
 
-    //    public void testTransferAccountFromAccountTo() {
-//        Bank account = new Bank();
-//
-//        //int expected = 2000;
-//        boolean actual = account.transfer(2000);
-//
-//        Assertions.assertTrue(actual);
-//    }
+    public void testTransferAccountFromAccountTo() {
+        Bank account = new Bank(
+                1000,
+                10
+        );
+
+        //int expected = 2000;
+        boolean actual = account.transfer(500);
+        Assertions.assertTrue(actual);
+    }
+
     @Test
     public void testPayTrue() {
         Bank account = new Bank(
@@ -110,7 +113,4 @@ public class BankTest {
 
         Assertions.assertEquals(2000, account.getTo());
     }
-
-
-
 }
