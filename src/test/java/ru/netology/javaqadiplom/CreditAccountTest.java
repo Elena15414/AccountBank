@@ -31,6 +31,18 @@ public class CreditAccountTest {
         //Assertions.assertTrue(actual);
         Assertions.assertEquals(-50, account.getBalance());
     }
+    @Test
+    public void shouldTestPayLessCreditLimit() {
+        CreditAccount account = new CreditAccount(
+                -6_000,
+                5_000,
+                15
+        );
+
+        boolean actual = account.pay(50);
+
+        Assertions.assertFalse(actual);
+    }
 
     @Test
     public void shouldTestPayZero() {   //тест на amount=0
@@ -131,6 +143,26 @@ public class CreditAccountTest {
     public void shouldTestYearChange2() {     // тест на второе условие "если на счёте 200 рублей, то при любой ставке ответ должен быть 0"
         CreditAccount account = new CreditAccount(
                 200,
+                5_000,
+                15
+        );
+
+        Assertions.assertEquals(0, account.yearChange());
+    }
+    @Test
+    public void shouldTestYearChangeBalanceEqualsCreditLimit() {
+        CreditAccount account = new CreditAccount(
+                -5000,
+                5_000,
+                15
+        );
+
+        Assertions.assertEquals(-750, account.yearChange());
+    }
+    @Test
+    public void shouldTestYearChangeBalanceMoreCreditLimit() {
+        CreditAccount account = new CreditAccount(
+                -6000,
                 5_000,
                 15
         );

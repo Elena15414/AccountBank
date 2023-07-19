@@ -44,9 +44,8 @@ public class CreditAccount extends Account {
         if (amount <= 0) {
             return false;
         }
-        //balance = balance - amount; - поставил после выполнения проверки условия
         if (balance > -creditLimit) {
-            balance = balance - amount; // изменил условие
+            balance = balance - amount;
             return true;
         } else {
             return false;
@@ -66,7 +65,7 @@ public class CreditAccount extends Account {
      * @return
      */
     @Override
-    public boolean add(int amount) {
+    public boolean add (int amount) {
         if (amount <= 0) {
             return false;
         }
@@ -85,16 +84,11 @@ public class CreditAccount extends Account {
      */
     @Override
     public int yearChange() {
-        if (balance > -creditLimit && balance<0) { //добавил условие на начисление процентов
+        if (balance >= -creditLimit && balance < 0) {
             return balance / 100 * rate;
         }
         return 0;
     }
-
-
-
-       // return balance / 100 * rate;
-
 
     public int getCreditLimit() {
         return creditLimit;

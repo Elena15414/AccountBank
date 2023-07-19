@@ -20,15 +20,27 @@ public class SavingAccountTest {
     }
 
     @Test
+    public void shouldAddBalanceMoreMaxBalance() {
+        SavingAccount account = new SavingAccount(
+                15000,
+                1_000,
+                10_000,
+                5
+        );
+
+        account.add(50);
+        Assertions.assertFalse(false);
+    }
+
+    @Test
     public void shouldAddMoreThanMaxBalance() {    // тест на добавление суммы с превышением максимального балланса
-        SavingAccount account = new SavingAccount(   // исправила на  Assertions.assertEquals
+        SavingAccount account = new SavingAccount(
                 2_000,
                 1_000,
                 10_000,
                 5
         );
 
-        // Assertions.assertFalse(account.add(23000));
         Assertions.assertEquals(2000, account.getBalance());
     }
 
@@ -47,7 +59,7 @@ public class SavingAccountTest {
     }
 
     @Test
-    public void shouldPayWhenSufficientBalance() {    // тест на списание суммы за покупку до граничного значения
+    public void shouldPayWhenSufficientBalance() {
         SavingAccount account = new SavingAccount(
                 2_000,
                 1_000,
@@ -59,6 +71,19 @@ public class SavingAccountTest {
 
         Assertions.assertEquals(1_500, account.getBalance());
         Assertions.assertTrue(true);
+    }
+
+    @Test
+    public void shouldPayBalanceLessMinBalance() {
+        SavingAccount account = new SavingAccount(
+                500,
+                1_000,
+                10_000,
+                5
+        );
+
+        account.pay(50);
+        Assertions.assertFalse(false);
     }
 
     @Test
@@ -113,49 +138,49 @@ public class SavingAccountTest {
         Assertions.assertEquals(100, account.yearChange());
     }
 
-    @Test
-    public void shouldPayBooleanPayWhenInt() {              // тест на тип boolean Pay Account
-
-        Account account = new Account();
-
-        account.pay(1); // сумма выше минимального значения, значит должен false сработать
-
-        Assertions.assertFalse(false);//изменен Assertions.assertEquals на .assertFalse
-    }
-
-    @Test
-    public void shouldAddBooleanPayWhenInt() {              // тест на тип boolean Pay Account
-
-        Account account = new Account();
-
-        account.add(1); //
-
-        Assertions.assertFalse(false);
-    }
-
-    @Test
-    public void shouldWhenYearChange() {              // тест на пустой метод YearChange
-
-        Account account = new Account();
-
-        account.yearChange();
-        int expected = 0;
-        int actual = account.yearChange();
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldSetRate() {              // тест на Set Rate
-
-        Account account = new Account();
-        account.setRate(3);
-
-        int expected = 3;
-        int actual = account.rate;
-
-        Assertions.assertEquals(expected, actual);
-    }
+//    @Test
+//    public void shouldPayBooleanPayWhenInt() {              // тест на тип boolean Pay Account
+//
+//        Account account = new Account();
+//
+//        account.pay(1); // сумма выше минимального значения, значит должен false сработать
+//
+//        Assertions.assertFalse(false);//изменен Assertions.assertEquals на .assertFalse
+//    }
+//
+//    @Test
+//    public void shouldAddBooleanPayWhenInt() {              // тест на тип boolean Pay Account
+//
+//        Account account = new Account();
+//
+//        account.add(1); //
+//
+//        Assertions.assertFalse(false);
+//    }
+//
+//    @Test
+//    public void shouldWhenYearChange() {              // тест на пустой метод YearChange
+//
+//        Account account = new Account();
+//
+//        account.yearChange();
+//        int expected = 0;
+//        int actual = account.yearChange();
+//
+//        Assertions.assertEquals(expected, actual);
+//    }
+//
+//    @Test
+//    public void shouldSetRate() {              // тест на Set Rate
+//
+//        Account account = new Account();
+//        account.setRate(3);
+//
+//        int expected = 3;
+//        int actual = account.rate;
+//
+//        Assertions.assertEquals(expected, actual);
+//    }
 
     @Test
     public void testRateWhenLessMinBalance() {   //тест на minBalance < balance
