@@ -14,7 +14,9 @@ public class BankTest {
         );
 
         //int expected = 2000;
-        boolean actual = account.transfer(500);
+        boolean actual = account.transfer(true,
+                true,
+                500);
         Assertions.assertTrue(actual);
     }
 
