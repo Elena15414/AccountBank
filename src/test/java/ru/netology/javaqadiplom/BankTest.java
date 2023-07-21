@@ -5,20 +5,6 @@ import org.junit.jupiter.api.Test;
 
 
 public class BankTest {
-    @Test
-
-    public void testTransferAccountFromAccountTo() {
-        Bank account = new Bank(
-                1000,
-                10
-        );
-
-        //int expected = 2000;
-        boolean actual = account.transfer(true,
-                true,
-                500);
-        Assertions.assertTrue(actual);
-    }
 
     @Test
     public void testPayTrue() {
@@ -114,5 +100,13 @@ public class BankTest {
         account.add(1000);
 
         Assertions.assertEquals(2000, account.getTo());
+    }
+
+    @Test
+    public void shouldateIsLessThanZero() {
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            new Bank(2000, -1);
+        });
     }
 }

@@ -31,6 +31,7 @@ public class CreditAccountTest {
         //Assertions.assertTrue(actual);
         Assertions.assertEquals(-50, account.getBalance());
     }
+
     @Test
     public void shouldTestPayLessCreditLimit() {
         CreditAccount account = new CreditAccount(
@@ -69,7 +70,7 @@ public class CreditAccountTest {
         boolean actual = account.pay(-50);
 
         Assertions.assertFalse(actual);
-       // Assertions.assertEquals(50, account.getBalance());
+        // Assertions.assertEquals(50, account.getBalance());
     }
 
     @Test
@@ -125,7 +126,7 @@ public class CreditAccountTest {
         boolean actual = account.add(-5);
 
         Assertions.assertFalse(actual);
-       // Assertions.assertEquals(5, account.getBalance());
+        // Assertions.assertEquals(5, account.getBalance());
     }
 
     @Test
@@ -149,6 +150,7 @@ public class CreditAccountTest {
 
         Assertions.assertEquals(0, account.yearChange());
     }
+
     @Test
     public void shouldTestYearChangeBalanceEqualsCreditLimit() {
         CreditAccount account = new CreditAccount(
@@ -159,6 +161,7 @@ public class CreditAccountTest {
 
         Assertions.assertEquals(-750, account.yearChange());
     }
+
     @Test
     public void shouldTestYearChangeBalanceMoreCreditLimit() {
         CreditAccount account = new CreditAccount(
@@ -183,16 +186,9 @@ public class CreditAccountTest {
 
     @Test
     public void shouldWhenTheRateIsLessThanZero() {
-       // CreditAccount account = new CreditAccount(
-       //         200,
-      //          5_000,
-       //         -10
-       // );
-
-        // процентная ставка -10, значит должено сработать исключение
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            new CreditAccount(200,5000,-10);
+            new CreditAccount(200, 5000, -10);
         });
 
     }

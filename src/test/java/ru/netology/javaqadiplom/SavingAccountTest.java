@@ -98,7 +98,7 @@ public class SavingAccountTest {
 
         account.pay(5000); // сумма выше минимального значения, значит должен false сработать
 
-        Assertions.assertFalse(false);//изменен Assertions.assertEquals на .assertFalse
+        Assertions.assertFalse(false);
     }
 
     @Test
@@ -113,7 +113,7 @@ public class SavingAccountTest {
 
         account.pay(0); // сумма равна 0, значит должен false сработать
 
-        Assertions.assertFalse(false);//изменен Assertions.assertEquals на .assertFalse
+        Assertions.assertFalse(false);
     }
 
     @Test
@@ -137,50 +137,6 @@ public class SavingAccountTest {
 
         Assertions.assertEquals(100, account.yearChange());
     }
-
-//    @Test
-//    public void shouldPayBooleanPayWhenInt() {              // тест на тип boolean Pay Account
-//
-//        Account account = new Account();
-//
-//        account.pay(1); // сумма выше минимального значения, значит должен false сработать
-//
-//        Assertions.assertFalse(false);//изменен Assertions.assertEquals на .assertFalse
-//    }
-//
-//    @Test
-//    public void shouldAddBooleanPayWhenInt() {              // тест на тип boolean Pay Account
-//
-//        Account account = new Account();
-//
-//        account.add(1); //
-//
-//        Assertions.assertFalse(false);
-//    }
-//
-//    @Test
-//    public void shouldWhenYearChange() {              // тест на пустой метод YearChange
-//
-//        Account account = new Account();
-//
-//        account.yearChange();
-//        int expected = 0;
-//        int actual = account.yearChange();
-//
-//        Assertions.assertEquals(expected, actual);
-//    }
-//
-//    @Test
-//    public void shouldSetRate() {              // тест на Set Rate
-//
-//        Account account = new Account();
-//        account.setRate(3);
-//
-//        int expected = 3;
-//        int actual = account.rate;
-//
-//        Assertions.assertEquals(expected, actual);
-//    }
 
     @Test
     public void testRateWhenLessMinBalance() {   //тест на minBalance < balance
@@ -207,8 +163,7 @@ public class SavingAccountTest {
                 5
         );
 
-        Assertions.assertEquals(0, account.yearChange());  // исправила expected на 0 ,
-        // так как в методе появились условия начисления процента
+        Assertions.assertEquals(0, account.yearChange());
     }
 
     @Test

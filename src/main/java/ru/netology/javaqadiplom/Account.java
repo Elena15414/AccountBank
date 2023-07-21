@@ -12,7 +12,7 @@ public abstract class Account {
         return false;
     }
 
-    public boolean transfer(Account from, Account to, int amount) {   // добавил метод из Bank
+    public boolean transfer(Account from, Account to, int amount) {
         return true;
     }
 

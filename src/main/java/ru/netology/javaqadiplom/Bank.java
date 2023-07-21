@@ -42,7 +42,7 @@ public class Bank extends Account {
         if (amount <= 0) {
             return false;
         }
-        from = balance - amount;// убрала int
+        from = balance - amount;
         return true;
     }
 
@@ -50,7 +50,7 @@ public class Bank extends Account {
         if (amount <= 0) {
             return false;
         }
-        to = balance + amount; // убрала int
+        to = balance + amount;
         return true;
     }
 
